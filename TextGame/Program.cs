@@ -9,7 +9,7 @@ namespace TextGame
 
     class Program
     {
-        public static int gameSpeed = 100;
+        public static int gameSpeed = 50;
         public static int mapSize = 25;
 
         static void Main(string[] args)
@@ -24,6 +24,7 @@ namespace TextGame
             //food.Draw();
             Map map = new Map(snake, food, mapSize);
             map.StartMapRender();
+            //Thread.Sleep(1000);
             // 게임 루프: 이 루프는 게임이 끝날 때까지 계속 실행됩니다.
             while (!Win(snake))
             {
@@ -89,7 +90,7 @@ namespace TextGame
         }
         public static bool Lose(Snake _snake, Map _map)
         {
-            if (_snake.bodypos[0].x < 1 || _snake.bodypos[0].x > mapSize*2-1 || _snake.bodypos[0].y < 1 || _snake.bodypos[0].y > mapSize - 1)
+            if (_snake.bodypos[0].x < 1 || _snake.bodypos[0].x > mapSize*2-3 || _snake.bodypos[0].y < 1 || _snake.bodypos[0].y > mapSize - 2)
             {
                 return true;
             }
