@@ -16,7 +16,7 @@ namespace TextGame
         public int headX;
         public int headY;
         public List<Point> bodypos = new List<Point>();
-        Direction direction;
+        public Direction direction;
         public char bodyImage = '◈';
         public Point headpos;
 
@@ -32,7 +32,7 @@ namespace TextGame
 
         public void Move()
         {          
-            headX = bodypos[0].x;
+            headX = bodypos[0].x; //이전 머리의 위치
             headY = bodypos[0].y;
             headpos = new Point(headX, headY);
 
@@ -57,6 +57,12 @@ namespace TextGame
             */
         }
         
+        public void EatFood(Snake _snake)
+        {
+            //뱀의 길이를 늘려주기
+            _snake.bodypos.Add(_snake.bodypos[_snake.bodypos.Count-1]);
+        }
+
 
     }
 }

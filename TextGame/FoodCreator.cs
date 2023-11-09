@@ -8,14 +8,34 @@ namespace TextGame
 {
     internal class FoodCreator
     {
-        int posX;
-        int posY;
+        public Point foodPos;
+        int mapSize;
         public char foodImage = '♣';
-        public FoodCreator(int x, int y)
-        {
-            posX = x;
-            posY = y;
+        public bool isfood = false;
+        Random rand = new Random();
 
+        public FoodCreator(int _mapSize)
+        {
+            mapSize = _mapSize;
+            foodPos = new Point(0, 0);
         }
+
+        public void spawnfood()
+        {
+            int _foodPosX = rand.Next(1, mapSize-1);
+            int _foodPosY = rand.Next(1, mapSize-1);
+
+            foodPos.x =_foodPosX*2;
+            foodPos.y =_foodPosY;
+
+            isfood = true;
+        }
+
+        public void EatFood(Map _map)
+        {         
+            _map.tile[foodPos.x, foodPos.y] = Map.TileType.grass;
+            isfood = false;
+        }
+
     }
 }
